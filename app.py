@@ -7,6 +7,7 @@ import matplotlib
 matplotlib.use('Agg')
 from sklearn.preprocessing import LabelEncoder
 import pycountry
+import os
 
 # ─── Page Config ───────────────────────────────────────────
 st.set_page_config(
@@ -149,9 +150,10 @@ div[data-testid="stSelectbox"] > div {
 """, unsafe_allow_html=True)
 
 # ─── Paths ─────────────────────────────────────────────────
-MODEL_PATH    = 'C:/projects/fraud_detection/models/fraud_model.pkl'
-FEATURES_PATH = 'C:/projects/fraud_detection/models/feature_names.pkl'
-DATA_PATH     = 'C:/projects/fraud_detection/data/Fraud Detection Dataset.csv'
+BASE_DIR      = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH    = os.path.join(BASE_DIR, 'models', 'fraud_model.pkl')
+FEATURES_PATH = os.path.join(BASE_DIR, 'models', 'feature_names.pkl')
+DATA_PATH     = os.path.join(BASE_DIR, 'data', 'Fraud Detection Dataset.csv')
 
 # ─── World Countries List ──────────────────────────────────
 ALL_COUNTRIES = sorted([country.name for country in pycountry.countries])
